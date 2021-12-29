@@ -3,7 +3,6 @@ runtime: nodejs12
 build:
   commands:    
     pre-build:
-      - npm ci
       - node test.js
     build:
       - npm ci --production                                  
