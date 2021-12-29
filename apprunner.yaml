@@ -5,6 +5,7 @@ build:
     build:
       - npm ci --production                                  
 run:                              
+  runtime-version: 12.21.0
   command: node app.js
   network:
     port: 3000
