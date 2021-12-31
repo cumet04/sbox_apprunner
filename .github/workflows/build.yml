@@ -1,0 +1,17 @@
+name: App Build
+on: push
+
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  aws-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::${{secrets.AWS_ACCOUNT}}:role/sbox_apprunner-gha
+          role-session-name: deploy-role-session
+          aws-region: ap-northeast-1
+      - run: aws sts get-caller-identity
